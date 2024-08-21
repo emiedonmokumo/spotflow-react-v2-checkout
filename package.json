@@ -1,8 +1,10 @@
 {
-  "name": "spotflow-react-v2-checkout",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@spot-flow/react-spotflow-checkout",
+  "version": "0.1.31",
   "type": "module",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "source": "lib/main.ts",
   "scripts": {
     "dev": "vite",
     "clean": "rimraf dist",
@@ -31,12 +33,17 @@
     "husky": "^9.1.4",
     "lint-staged": "^15.2.9",
     "prettier": "^3.3.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "rimraf": "^6.0.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1",
     "vite-plugin-dts": "^4.0.3",
+    "vite-plugin-svgr": "^4.2.0",
     "vite-tsconfig-paths": "^5.0.1"
   },
+  "author": "Kayode Ogunnowo <olukayodeogunnowo@gmail.com>",
+  "license": "MIT",
   "packageManager": "yarn@4.4.0+sha512.91d93b445d9284e7ed52931369bc89a663414e5582d00eea45c67ddc459a2582919eece27c412d6ffd1bd0793ff35399381cb229326b961798ce4f4cc60ddfdb"
 }

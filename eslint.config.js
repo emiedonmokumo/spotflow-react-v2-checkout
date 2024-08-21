@@ -34,6 +34,11 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+      "no-console": 1,
+      "no-unused-vars": [0, { args: "after-used", argsIgnorePattern: "^_" }],
+      "spaced-comment": 0,
+      "no-explicit-any": 0,
+      "@typescript-eslint/no-unused-vars": [2, { args: "after-used", argsIgnorePattern: "^_" }],
     },
   }
 );

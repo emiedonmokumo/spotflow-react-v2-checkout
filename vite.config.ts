@@ -4,17 +4,18 @@ import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import { peerDependencies } from "./package.json";
 import alias from "@rollup/plugin-alias";
+import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), svgr(), dts({ include: ["lib"] })],
   resolve: {
     alias: {
       "@library": resolve(__dirname, "lib"),
     },
   },
   build: {
-    // copyPublicDir: false,
+    sourcemap: true,
     lib: {
       entry: resolve(__dirname, "lib/main.ts"),
       formats: ["es"],
@@ -38,7 +39,6 @@ export default defineConfig({
           react: "React",
           "react-dom": "ReactDOM",
         },
-        sourcemap: true,
       },
     },
   },
