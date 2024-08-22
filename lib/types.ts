@@ -2,10 +2,16 @@
 export type SpotflowProps = {
   merchantKey: string;
   encryptionKey: string;
-  email: string;
-  amount?: number;
   planId: string;
-  references?: string;
+  regionId?: string;
+  email: string;
+  phone?: string;
+  amount?: number;
+  currency?: string;
+  reference?: string;
+  firstname?: string;
+  lastname?: string;
+  onTransferConfirmationPending?: (_val?: any) => void;
 };
 
 export type callback = (response?: any) => void;
@@ -17,3 +23,20 @@ export type InitialisePayment = (options: {
 }) => void;
 
 export type HookConfig = Omit<Partial<SpotflowProps>, "publicKey">;
+
+export type SpotflowCheckoutProps = {
+  merchantKey: string;
+  encryptionKey: string;
+  planId: string;
+  regionId?: string;
+  email: string;
+  phone?: string;
+  amount?: number;
+  currency?: string;
+  onSuccess?: (_val?: any) => void;
+  onClose?: () => void;
+  reference?: string;
+  firstname?: string;
+  lastname?: string;
+  onTransferConfirmationPending?: (_val?: any) => void;
+};

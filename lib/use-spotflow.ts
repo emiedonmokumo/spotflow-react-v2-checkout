@@ -2,9 +2,22 @@ import { callSpotflowPop } from "./spotflow-actions";
 import { HookConfig, InitialisePayment } from "./types";
 
 export default function useSpotflow(hookConfig: HookConfig) {
-  function initialisePayment({ config }: Parameters<InitialisePayment>[0]) {
+  function initialisePayment({ config, onClose, onSuccess }: Parameters<InitialisePayment>[0]) {
     const args = { ...hookConfig, ...config };
-    const { merchantKey, planId, encryptionKey, email, amount } = args;
+    const {
+      merchantKey,
+      planId,
+      encryptionKey,
+      email,
+      amount,
+      currency = "NGN",
+      firstname,
+      lastname,
+      onTransferConfirmationPending,
+      phone,
+      reference,
+      regionId,
+    } = args;
 
     const spotflowArgs = {
       merchantKey,
@@ -12,6 +25,16 @@ export default function useSpotflow(hookConfig: HookConfig) {
       encryptionKey,
       email,
       amount,
+      onSuccess: onSuccess ? onSuccess : () => null,
+      onCancel: onClose ? onClose : () => null,
+      ...(regionId && { regionId }),
+      ...(email && { email }),
+      ...(firstname && { firstname }),
+      ...(lastname && { lastname }),
+      ...(phone && { phone }),
+      ...(currency && { currency }),
+      ...(reference && { reference }),
+      ...(onTransferConfirmationPending && { onTransferConfirmationPending }),
     };
 
     callSpotflowPop(spotflowArgs);
