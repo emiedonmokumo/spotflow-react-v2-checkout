@@ -1,12 +1,12 @@
-<p align="center">
+<!-- <p align="center">
    <img src="" />
-</p>
+</p> -->
 
 # Spotflow React Library
 
 ## Introduction
 
-The Spotflow React Sdk helps you or rather enables users to make payments seamlessly. It integrates smoothly into your application, providing a streamlined checkout experience.
+The **Spotflow React Sdk** helps you or rather enables users to make payments seamlessly. It integrates smoothly into your application, providing a streamlined checkout experience.
 
 Available Features:
 
@@ -32,7 +32,7 @@ Available Features:
 
 ## Demo
 
-<img width="808" alt="Screenshot 2024-07-26 at 16 05 52" src="https://github.com/user-attachments/assets/4dbb0b2e-2142-4f04-994a-5c352de7d30e">
+![Alt text](https://github.com/user-attachments/assets/4dbb0b2e-2142-4f04-994a-5c352de7d30e "a title")
 
 ## Installation
 
@@ -154,10 +154,10 @@ export declare type InitialiseConfig = {
   email: string;
   phone?: string;
   /**
-   * @type {"USD" | "EUR" | "NGN" | "GBP"}
-   * Acceptable currency are USD, EUR, NGN, GBP
+   * @type {"USD" | "NGN" }
+   * Acceptable currency are USD, NGN, 
    */
-  currency?: "USD" | "EUR" | "NGN" | "GBP" | string;
+  currency?: "USD"  | "NGN"  | string;
   amount: number;
   /**
    * merchant generated secret key
@@ -172,14 +172,36 @@ export type CheckoutPaymentProps = React.ComponentProps<"button"> & {
 };
 ```
 
+### Parameters
+
+Read more about our parameters and how they can be used [here](https://developer.flutterwave.com/docs/collecting-payments/inline).
+
+| Parameter           | Always Required ? |Description     |
+| ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| merchantKey         | True              | Your API public |
+| reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
+| amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details    |
+| currency            | False             | currency to charge in. Defaults to NGN                 |
+| encryptionKey       | True               | This is the encryption key for the merchant |
+| planId   | True | This is the plan id being paid for  |
+| firstname | False | This is the Customer Preview Name |
+| lastname | False | This is the Customer Preview Last Name |
+| regionId | False | this is the merchant's region where the customer is subscribed to |
+| phone | False | This is the phone numbern of the customer |
+
 ## Contribting Guidelines
+
+We welcome contributions from the community. Read more about our community contribution guidelines [here](/CONTRIBUTION.md).
 
 ## Supports
 
 ## License
 
-### Getting Started
+By contributing to this library, you agree that your contributions will be licensed under its [MIT license](/LICENSE).
+
+Copyright (c) Spotflow Inc.
 
 ## Contributors
 
-We welcome contributions! Follow the steps below to get started:
+- [Olukayode Ogunnowo](http://github.com/dansagam)
+- [Oluwatosin Jimoh](https://github.com/ekiira)
