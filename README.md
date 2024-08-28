@@ -1,13 +1,34 @@
+<p align="center">
+   <img src="" />
+</p>
 
-# Spotflow Checkout Inline
+# Spotflow React Library
 
-This project is an inline library that enables users to make payments seamlessly. It integrates smoothly into your application, providing a streamlined checkout experience.
+## Introduction
 
-For React components and usage, [link](https://github.com/Spotflow-One/react-spotflow-checkout)
+The Spotflow React Sdk helps you or rather enables users to make payments seamlessly. It integrates smoothly into your application, providing a streamlined checkout experience.
 
-For Vue.js components and usage, [link](https://github.com/Spotflow-One/vue-spotflow-checkout)
+Available Features:
 
-For Angular components and usage, [link](https://github.com/Spotflow-One/angular-spotflow-checkout)
+- Collections: Card, Bank Transfers, USSD
+- Recurring payments: Tokenization and Subscriptions.
+
+## Table of Contents
+
+1. [Requirements](#requirements)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Support](#supports)
+5. [License](#license)
+6. [Contributing Guidelines](#contribting-guidelines)
+7. [Contributors](#contributors)
+
+## Requirements
+
+1. Spoflow Encryption keys
+2. Spotflow API keys
+3. Node versions >= 16.x.x npm >=7.x.x
+4. React version >= 16.8.0
 
 ## Demo
 
@@ -15,78 +36,150 @@ For Angular components and usage, [link](https://github.com/Spotflow-One/angular
 
 ## Installation
 
- ```sh
-npm install @spot-flow/checkout-inline-js
+using npm
+
+ ```bash
+  npm i @spot-flow/react-spotflow-checkout
+
+# or
+
+  yarn add @spot-flow/react-spotflow-checkout
+
+# or
+  pnpm add @spot-flow/react-spotflow-checkout
    ```
 
 ## Usage
 
- ```sh
- import { CheckoutForm } from "@spot-flow/checkout-inline-js";
+Add Spotflow as a component or react hook
 
- const checkout = new CheckoutForm(
-       merchantKey = "<sk_test_f998479c0eedhXXXXXXXXXXXXXXXX>"// This is your Merchant Key generated for your Merchant on Spotflow
-       email = "email",
-       amount = 1000,
-     );
- checkout.setup();
- ```
+This library can be implemented using the following
 
-Alternatively, you can include it directly in your HTML via a CDN:
+1. By Using the Button SpotflowButton component
+2. By Using the the Checkout Provider and the logic Hook (preferred method)
 
-```sh
-<script src="https://dr4h9151gox1m.cloudfront.net/dist/checkout-inline.js"></script>  
+### 1. Using the Payment CheckoutButton
+
+```javascript
+import { SpotflowButton } from "@spot-flow/react-spotflow-checkout";
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <div>
+      <SpotflowButton
+        data={{
+          amount: 4000,
+          currency: "NGN",
+          email: "temi@mailinator.com",
+          firstname: "Hammed"
+          lastname: "Chigozie"
+          phone: "09090909090",
+          encryptionKey: "SKKXXXXXXXXXXXXXXXXX"
+          planId: "9e0808304-344d-XXXXXXXXX-XXXXX834034",
+          merchantKey: "<sk_test_fXXXXedhXXXXXXXXXXXXXXXX>"// <This is your Merchant Key generated for you Merchant on Spotflow> 
+        }}
+        actionText="Pay Money"
+      />
+    </div>
+  </React.StrictMode>,
+);
+
 ```
 
- ```sh
- <button onclick="openCheckout()">
-    Make Payment
- </button>
- ```
+### 2. Using the Checkout Provider and the logic hooks
 
- ```sh
- <script>
-   const openCheckout = () => {
-     const { CheckoutForm } = SpotflowCheckout
-     const checkout = new CheckoutForm(
-       merchantKey = "<sk_test_f998479c0eedhXXXXXXXXXXXXXXXX>"// This is your Merchant Key generated for your Merchant on Spotflow
-       email = "temi@mailinator.com",
-       amount = 1000,
-     );
-     checkout.setup();
-   };
- </script>
- ```
+```javascript
 
-## Contributing
+import {
+  // PaymentCheckoutButton,
+  PaymentContextProvider,
+  useSpotflowPayment,
+} from "@spot-flow/react-spotflow-checkout";
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-We welcome contributions! Follow the steps below to get started:
+const PaymentConponents = () => {
+   const config = {
+    amount: 4000,
+    currency: "NGN",
+    email: "temi@mailinator.com",
+    merchantKey: "XXXX",
+    reference: Date.now().toString(),
+    plan: "",
+    encryptionKey:  "XXXXJXJDKD"
+
+   }
+  const initialFn = useSpotflowPayment(config);
+
+  return (
+    <div>
+      <button
+        type="button"
+        onClick={() => {
+          initialFn({
+            config: undefined,
+            onClose: () => {
+               // Enter your action here
+            },
+            onSuccess: () => {
+               // Enter your action here 
+            }
+          });
+        }}
+        className=" bg-primary-main text-black"
+      >
+        Apaysjbdjbs
+      </button>
+    </div>
+  );
+};
+
+
+```
+
+the Button has the ButtonProps which can allow you to customize to your design
+
+```javascript
+import React from "react";
+
+
+export declare type InitialiseConfig = {
+  /**
+   * plan Id from spotflow
+   */
+  plan: string;
+  fullname?: string;
+  email: string;
+  phone?: string;
+  /**
+   * @type {"USD" | "EUR" | "NGN" | "GBP"}
+   * Acceptable currency are USD, EUR, NGN, GBP
+   */
+  currency?: "USD" | "EUR" | "NGN" | "GBP" | string;
+  amount: number;
+  /**
+   * merchant generated secret key
+   */
+  merchantKey: string;
+  reference?: string;
+};
+
+export type CheckoutPaymentProps = React.ComponentProps<"button"> & {
+  data: CheckoutData;
+  actionText: string;
+};
+```
+
+## Contribting Guidelines
+
+## Supports
+
+## License
 
 ### Getting Started
 
-1. **Clone the repository:**
+## Contributors
 
-   ```sh
-   git clone https://github.com/Spotflow-One/spotflow-checkout.git
-   cd your-repo
-   ```
-
-2. **Install dependencies:**
-
-   ```sh
-   npm install
-   ```
-
-### Example Usage
-
-You can see an example of how to use the library in `index.html`. Open this file in your browser to see it in action.
-
-### Building the Project
-
-To build the project, run:
-
-```sh
-npm run build
-```
-
-This will compile the source files and generate the output in the `dist` directory.
+We welcome contributions! Follow the steps below to get started:
