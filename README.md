@@ -176,7 +176,7 @@ Read more about our parameters and how they can be used [here](https://developer
 
 | Parameter           | Always Required ? |Description     |
 | ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| merchantKey         | True              | Your API public |
+| merchantKey         | True              | Your API Secret |
 | reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
 | amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details    |
 | currency            | False             | currency to charge in. Defaults to NGN                 |
