@@ -69,7 +69,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <div>
       <SpotflowButton
-        data={{
           amount: 4000,
           currency: "NGN",
           email: "temi@mailinator.com",
@@ -79,7 +78,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           encryptionKey: "SKKXXXXXXXXXXXXXXXXX"
           planId: "9e0808304-344d-XXXXXXXXX-XXXXX834034",
           merchantKey: "<sk_test_fXXXXedhXXXXXXXXXXXXXXXX>"// <This is your Merchant Key generated for you Merchant on Spotflow> 
-        }}
         actionText="Pay Money"
       />
     </div>
