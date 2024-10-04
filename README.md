@@ -57,28 +57,29 @@ This library can be implemented using the following
 ### 1. Using the Payment CheckoutButton
 
 ```javascript
+
 import { SpotflowButton } from "@spot-flow/react-spotflow-checkout";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+const PaymentConponent = () => {
+  return (
     <div>
       <SpotflowButton
-          amount={4000}
-          currency="NGN"
-          email="temi@mailinator.com"
-          firstname="John"
-          lastname="Doe"
-          phone="09090909090"
-          encryptionKey="SKKXXXXXXXXXXXXXXXXX"
-          planId="9e0808304-344d-XXXXXXXXX-XXXXX834034"
-          merchantKey="sk_test_fXXXXedhXXXXXXXXXXXXXXXX"
-          text="Pay Money"
+        amount={4000}
+        currency="NGN"
+        email="temi@mailinator.com"
+        firstname="John"
+        lastname="Doe"
+        phone="09090909090"
+        encryptionKey="SKKXXXXXXXXXXXXXXXXX"
+        planId="9e0808304-344d-XXXXXXXXX-XXXXX834034"
+        merchantKey="sk_test_fXXXXedhXXXXXXXXXXXXXXXX"
+        text="Pay Money"
       />
     </div>
-  </React.StrictMode>,
-);
+  );
+};
 
 ```
 
@@ -94,16 +95,15 @@ import { useSpotflowPayment } from "@spot-flow/react-spotflow-checkout";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const PaymentConponents = () => {
-   const config = {
+const PaymentConponent = () => {
+  const config = {
     amount: 4000,
     currency: "NGN",
     email: "temi@mailinator.com",
     merchantKey: "sk_test_fXXXXedhXXXXXXXXXXXXXXXX",
     planId="9e0808304-344d-XXXXXXXXX-XXXXX834034",
     encryptionKey:"SKKXXXXXXXXXXXXXXXXX"
-
-   }
+  }
   const initialFn = useSpotflowPayment(config);
 
   return (
