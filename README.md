@@ -57,28 +57,28 @@ This library can be implemented using the following
 ### 1. Using the Payment CheckoutButton
 
 ```javascript
-import { SpotflowButton } from "@spot-flow/react-spotflow-checkout";
-import React from "react";
-import ReactDOM from "react-dom/client";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+import React from "react";
+import { SpotflowButton } from "@spot-flow/react-spotflow-checkout";
+
+const PaymentConponent = () => {
+  return (
     <div>
       <SpotflowButton
-          amount={4000}
-          currency="NGN"
-          email="temi@mailinator.com"
-          firstname="John"
-          lastname="Doe"
-          phone="09090909090"
-          encryptionKey="SKKXXXXXXXXXXXXXXXXX"
-          planId="9e0808304-344d-XXXXXXXXX-XXXXX834034"
-          merchantKey="sk_test_fXXXXedhXXXXXXXXXXXXXXXX"
-          text="Pay Money"
+        amount={4000}
+        currency="NGN"
+        email="temi@mailinator.com"
+        firstname="John"
+        lastname="Doe"
+        phone="09090909090"
+        encryptionKey="SKKXXXXXXXXXXXXXXXXX"
+        planId="9e0808304-344d-XXXXXXXXX-XXXXX834034"
+        merchantKey="sk_test_fXXXXedhXXXXXXXXXXXXXXXX"
+        text="Pay Money"
       />
     </div>
-  </React.StrictMode>,
-);
+  );
+};
 
 ```
 
@@ -90,20 +90,18 @@ SpotflowButton has the ButtonProps which can allow you to customize to your desi
 
 ```javascript
 
-import { useSpotflowPayment } from "@spot-flow/react-spotflow-checkout";
 import React from "react";
-import ReactDOM from "react-dom/client";
+import { useSpotflowPayment } from "@spot-flow/react-spotflow-checkout";
 
-const PaymentConponents = () => {
-   const config = {
+const PaymentConponent = () => {
+  const config = {
     amount: 4000,
     currency: "NGN",
     email: "temi@mailinator.com",
     merchantKey: "sk_test_fXXXXedhXXXXXXXXXXXXXXXX",
     planId="9e0808304-344d-XXXXXXXXX-XXXXX834034",
     encryptionKey:"SKKXXXXXXXXXXXXXXXXX"
-
-   }
+  }
   const initialFn = useSpotflowPayment(config);
 
   return (
@@ -136,7 +134,7 @@ const PaymentConponents = () => {
 
 Read more about our parameters and how they can be used [here](https://docs.spotflow.one/Developer%20Tools/inline-js).
 
-| Parameter           | Required ? |Description     |
+| Parameter           | Required |Description     |
 | ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | merchantKey         | True              | Your API Secret |
 | reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
@@ -153,8 +151,6 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 ## Contribution Guidelines
 
 We welcome contributions from the community. Read more about our community contribution guidelines [here](/CONTRIBUTION.md).
-
-## Supports
 
 ## License
 
