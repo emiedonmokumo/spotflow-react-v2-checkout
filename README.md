@@ -1,7 +1,3 @@
-<!-- <p align="center">
-   <img src="" />
-</p> -->
-
 # Spotflow React Library
 
 ## Introduction
@@ -69,16 +65,16 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <div>
       <SpotflowButton
-          amount: 4000,
-          currency: "NGN",
-          email: "temi@mailinator.com",
-          firstname: "Hammed"
-          lastname: "Chigozie"
-          phone: "09090909090",
-          encryptionKey: "SKKXXXXXXXXXXXXXXXXX"
-          planId: "9e0808304-344d-XXXXXXXXX-XXXXX834034",
-          merchantKey: "<sk_test_fXXXXedhXXXXXXXXXXXXXXXX>"// <This is your Merchant Key generated for you Merchant on Spotflow> 
-        actionText="Pay Money"
+          amount={4000}
+          currency="NGN"
+          email="temi@mailinator.com"
+          firstname="John"
+          lastname="Doe"
+          phone="09090909090"
+          encryptionKey="SKKXXXXXXXXXXXXXXXXX"
+          planId="9e0808304-344d-XXXXXXXXX-XXXXX834034"
+          merchantKey="sk_test_fXXXXedhXXXXXXXXXXXXXXXX"
+          text="Pay Money"
       />
     </div>
   </React.StrictMode>,
@@ -86,15 +82,15 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
 ```
 
+SpotflowButton has the ButtonProps which can allow you to customize to your design
+
+
+
 ### 2. Using the Checkout Provider and the logic hooks
 
 ```javascript
 
-import {
-  // PaymentCheckoutButton,
-  PaymentContextProvider,
-  useSpotflowPayment,
-} from "@spot-flow/react-spotflow-checkout";
+import { useSpotflowPayment } from "@spot-flow/react-spotflow-checkout";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
@@ -103,10 +99,9 @@ const PaymentConponents = () => {
     amount: 4000,
     currency: "NGN",
     email: "temi@mailinator.com",
-    merchantKey: "XXXX",
-    reference: Date.now().toString(),
-    plan: "",
-    encryptionKey:  "XXXXJXJDKD"
+    merchantKey: "sk_test_fXXXXedhXXXXXXXXXXXXXXXX",
+    planId="9e0808304-344d-XXXXXXXXX-XXXXX834034",
+    encryptionKey:"SKKXXXXXXXXXXXXXXXXX"
 
    }
   const initialFn = useSpotflowPayment(config);
@@ -128,7 +123,7 @@ const PaymentConponents = () => {
         }}
         className=" bg-primary-main text-black"
       >
-        Apaysjbdjbs
+        Pay
       </button>
     </div>
   );
@@ -137,57 +132,25 @@ const PaymentConponents = () => {
 
 ```
 
-the Button has the ButtonProps which can allow you to customize to your design
-
-```javascript
-import React from "react";
-
-
-export declare type InitialiseConfig = {
-  /**
-   * plan Id from spotflow
-   */
-  plan: string;
-  fullname?: string;
-  email: string;
-  phone?: string;
-  /**
-   * @type {"USD" | "NGN" }
-   * Acceptable currency are USD, NGN, 
-   */
-  currency?: "USD"  | "NGN"  | string;
-  amount: number;
-  /**
-   * merchant generated secret key
-   */
-  merchantKey: string;
-  reference?: string;
-};
-
-export type CheckoutPaymentProps = React.ComponentProps<"button"> & {
-  data: CheckoutData;
-  actionText: string;
-};
-```
-
 ### Parameters
 
-Read more about our parameters and how they can be used [here](https://developer.flutterwave.com/docs/collecting-payments/inline).
+Read more about our parameters and how they can be used [here](https://docs.spotflow.one/Developer%20Tools/inline-js).
 
-| Parameter           | Always Required ? |Description     |
+| Parameter           | Required ? |Description     |
 | ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | merchantKey         | True              | Your API Secret |
 | reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
 | amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details    |
-| currency            | False             | currency to charge in. Defaults to NGN                 |
+| currency            | False             | Currency to charge in. Defaults to NGN                 |
 | encryptionKey       | True               | This is the encryption key for the merchant |
 | planId   | True | This is the plan id being paid for  |
-| firstname | False | This is the Customer Preview Name |
-| lastname | False | This is the Customer Preview Last Name |
-| regionId | False | this is the merchant's region where the customer is subscribed to |
-| phone | False | This is the phone numbern of the customer |
+| firstname | False | This is the Customer's First Name |
+| lastname | False | This is the Customer's Last Name |
+| email | True | This is the Customer's Email Address |
+| regionId | False | This is the merchant's region where the customer is subscribed to |
+| phone | False | This is the phone number of the customer |
 
-## Contribting Guidelines
+## Contribution Guidelines
 
 We welcome contributions from the community. Read more about our community contribution guidelines [here](/CONTRIBUTION.md).
 
@@ -202,4 +165,4 @@ Copyright (c) Spotflow Inc.
 ## Contributors
 
 - [Olukayode Ogunnowo](http://github.com/dansagam)
-- [Oluwatosin Jimoh](https://github.com/ekiira)
+- [Oluwatomisin Jimoh](https://github.com/ekiira)
