@@ -51,8 +51,8 @@ Add Spotflow as a component or react hook
 
 This library can be implemented using the following
 
-1. By Using the Button SpotflowButton component
-2. By Using the the Checkout Provider and the logic Hook (preferred method)
+1. By Using the SpotflowButton component
+2. By Using hooks (preferred method)
 
 ### 1. Using the Payment CheckoutButton
 
@@ -86,7 +86,7 @@ SpotflowButton has the ButtonProps which can allow you to customize to your desi
 
 
 
-### 2. Using the Checkout Provider and the logic hooks
+### 2. Using hooks
 
 ```javascript
 
