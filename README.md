@@ -58,9 +58,8 @@ This library can be implemented using the following
 
 ```javascript
 
-import { SpotflowButton } from "@spot-flow/react-spotflow-checkout";
 import React from "react";
-import ReactDOM from "react-dom/client";
+import { SpotflowButton } from "@spot-flow/react-spotflow-checkout";
 
 const PaymentConponent = () => {
   return (
@@ -91,9 +90,8 @@ SpotflowButton has the ButtonProps which can allow you to customize to your desi
 
 ```javascript
 
-import { useSpotflowPayment } from "@spot-flow/react-spotflow-checkout";
 import React from "react";
-import ReactDOM from "react-dom/client";
+import { useSpotflowPayment } from "@spot-flow/react-spotflow-checkout";
 
 const PaymentConponent = () => {
   const config = {
