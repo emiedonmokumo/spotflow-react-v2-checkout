@@ -134,7 +134,7 @@ const PaymentConponent = () => {
 
 Read more about our parameters and how they can be used [here](https://docs.spotflow.one/Developer%20Tools/inline-js).
 
-| Parameter           | Required ? |Description     |
+| Parameter           | Required |Description     |
 | ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | merchantKey         | True              | Your API Secret |
 | reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
@@ -151,8 +151,6 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 ## Contribution Guidelines
 
 We welcome contributions from the community. Read more about our community contribution guidelines [here](/CONTRIBUTION.md).
-
-## Supports
 
 ## License
 
