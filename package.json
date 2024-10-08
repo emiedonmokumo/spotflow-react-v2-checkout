@@ -1,6 +1,6 @@
 {
   "name": "@spot-flow/react-spotflow-checkout",
-  "version": "0.1.40",
+  "version": "0.1.41",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -43,6 +43,9 @@
     "vite-plugin-svgr": "^4.2.0",
     "vite-tsconfig-paths": "^5.0.1"
   },
+  "files": [
+    "dist"
+  ],
   "author": "Kayode Ogunnowo <olukayodeogunnowo@gmail.com>",
   "license": "MIT",
   "packageManager": "yarn@4.4.0+sha512.91d93b445d9284e7ed52931369bc89a663414e5582d00eea45c67ddc459a2582919eece27c412d6ffd1bd0793ff35399381cb229326b961798ce4f4cc60ddfdb"
