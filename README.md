@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The **Spotflow React Sdk** helps you or rather enables users to make payments seamlessly. It integrates smoothly into your application, providing a streamlined checkout experience.
+The **Spotflow React SDK** helps you or rather enables users to make payments seamlessly. It integrates smoothly into your application, providing a streamlined checkout experience.
 
 Available Features:
 
@@ -28,7 +28,7 @@ Available Features:
 
 ## Demo
 
-![Alt text](https://github.com/user-attachments/assets/4dbb0b2e-2142-4f04-994a-5c352de7d30e "a title")
+![Alt text](./react-demo.png "a title")
 
 ## Installation
 
@@ -47,12 +47,12 @@ using npm
 
 ## Usage
 
-Add Spotflow as a component or react hook
+Add Spotflow as a component or React Hook
 
 This library can be implemented using the following
 
 1. By Using the SpotflowButton component
-2. By Using hooks (preferred method)
+2. By Using Hooks (preferred method)
 
 ### 1. Using the Payment CheckoutButton
 
@@ -61,7 +61,7 @@ This library can be implemented using the following
 import React from "react";
 import { SpotflowButton } from "@spot-flow/react-spotflow-checkout";
 
-const PaymentConponent = () => {
+const PaymentComponent = () => {
   return (
     <div>
       <SpotflowButton
@@ -86,20 +86,20 @@ SpotflowButton has the ButtonProps which can allow you to customize to your desi
 
 
 
-### 2. Using hooks
+### 2. Using Hooks
 
 ```javascript
 
 import React from "react";
 import { useSpotflowPayment } from "@spot-flow/react-spotflow-checkout";
 
-const PaymentConponent = () => {
+const PaymentComponent = () => {
   const config = {
     amount: 4000,
     currency: "NGN",
     email: "temi@mailinator.com",
     merchantKey: "sk_test_fXXXXedhXXXXXXXXXXXXXXXX",
-    planId="9e0808304-344d-XXXXXXXXX-XXXXX834034",
+    planId: "9e0808304-344d-XXXXXXXXX-XXXXX834034",
     encryptionKey:"SKKXXXXXXXXXXXXXXXXX"
   }
   const initialFn = useSpotflowPayment(config);
@@ -145,8 +145,6 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 | firstname | False | This is the Customer's First Name |
 | lastname | False | This is the Customer's Last Name |
 | email | True | This is the Customer's Email Address |
-| regionId | False | This is the merchant's region where the customer is subscribed to |
-| phone | False | This is the phone number of the customer |
 
 ## Contribution Guidelines
 
