@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The **Spotflow React SDK** helps you or rather enables users to make payments seamlessly. It integrates smoothly into your application, providing a streamlined checkout experience.
+The **Spotflow React SDK** helps you or rather enables users to make payments seamlessly. It integrates smoothly into your **React** application, providing a streamlined checkout experience.
 
 Available Features:
 
@@ -138,8 +138,8 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 | ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | merchantKey         | True              | Your API Secret |
 | reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
-| amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details    |
-| currency            | False             | Currency to charge in. Defaults to NGN                 |
+| amount              | False              | Amount to charge the customer.    |
+| currency            | False             | Currency to charge in.                 |
 | encryptionKey       | True               | This is the encryption key for the merchant |
 | planId   | True | This is the plan id being paid for  |
 | firstname | False | This is the Customer's First Name |
