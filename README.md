@@ -28,7 +28,7 @@ Available Features:
 
 ## Demo
 
-![Alt text](./react-demo.png "a title")
+![Alt text](./src/assets/react-demo.png "a title")
 
 ## Installation
 
