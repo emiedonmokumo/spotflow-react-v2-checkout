@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The **Spotflow React SDK** helps you or rather enables users to make payments seamlessly. It integrates smoothly into your **React** application, providing a streamlined checkout experience.
+The **Spotflow React SDK** enables users to make payments seamlessly. It integrates smoothly into your **React** application, providing a streamlined checkout experience.
 
 Available Features:
 
