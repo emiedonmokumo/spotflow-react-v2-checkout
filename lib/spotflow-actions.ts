@@ -19,6 +19,7 @@ export const callSpotflowPop = (args: Record<string, any>) => {
       firstname: args.firstname,
       lastname: args.lastname,
       rdtCode: args?.rdtCode,
+      url: args?.url,
       onTransferConfirmationPending: args.onTransferConfirmationPending,
     };
     const checkout = window.SpotflowCheckout;

@@ -2,6 +2,7 @@
 export type SpotflowProps = {
   merchantKey: string;
   rdtCode?: string;
+  url?: string;
   encryptionKey: string;
   planId?: string;
   regionId?: string;
@@ -35,6 +36,7 @@ export type SpotflowCheckoutProps = {
   amount?: number;
   currency?: string;
   rdtCode?: string;
+  url?: string;
   onSuccess?: (_val?: any) => void;
   onClose?: () => void;
   reference?: string;
