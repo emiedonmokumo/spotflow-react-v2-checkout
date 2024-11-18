@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export type SpotflowProps = {
   merchantKey: string;
+  rdtCode?: string;
+  url?: string;
   encryptionKey: string;
-  planId: string;
+  planId?: string;
   regionId?: string;
   email: string;
   phone?: string;
@@ -27,12 +29,14 @@ export type HookConfig = Omit<Partial<SpotflowProps>, "publicKey">;
 export type SpotflowCheckoutProps = {
   merchantKey: string;
   encryptionKey: string;
-  planId: string;
+  planId?: string;
   regionId?: string;
   email: string;
   phone?: string;
   amount?: number;
   currency?: string;
+  rdtCode?: string;
+  url?: string;
   onSuccess?: (_val?: any) => void;
   onClose?: () => void;
   reference?: string;

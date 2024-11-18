@@ -17,6 +17,8 @@ export default function useSpotflow(hookConfig: HookConfig) {
       phone,
       reference,
       regionId,
+      rdtCode,
+      url
     } = args;
 
     const spotflowArgs = {
@@ -34,6 +36,8 @@ export default function useSpotflow(hookConfig: HookConfig) {
       ...(phone && { phone }),
       ...(currency && { currency }),
       ...(reference && { reference }),
+      ...(rdtCode && { rdtCode }),
+      ...(url && { url }),
       ...(onTransferConfirmationPending && { onTransferConfirmationPending }),
     };
 
