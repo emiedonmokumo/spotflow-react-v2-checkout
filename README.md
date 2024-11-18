@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The **Spotflow React SDK** enables users to make payments seamlessly. It integrates smoothly into your **React** application, providing a streamlined checkout experience.
+The **Spotflow React SDK** helps you or rather enables users to make payments seamlessly. It integrates smoothly into your application, providing a streamlined checkout experience.
 
 Available Features:
 
@@ -28,7 +28,7 @@ Available Features:
 
 ## Demo
 
-![Alt text](https://raw.githubusercontent.com/Spotflow-One/spotflow-react-v2-checkout/refs/heads/chore/jo/documentation-update/src/assets/react-demo.png "a title")
+![Alt text](./react-demo.png "a title")
 
 ## Installation
 
@@ -65,14 +65,14 @@ const PaymentComponent = () => {
   return (
     <div>
       <SpotflowButton
-        amount={4000}
-        currency="NGN"
+        amount={4000} // Not required for subscription payment
+        currency="NGN" // Not required for subscription payment
         email="temi@mailinator.com"
         firstname="John"
         lastname="Doe"
         phone="09090909090"
         encryptionKey="SKKXXXXXXXXXXXXXXXXX"
-        planId="9e0808304-344d-XXXXXXXXX-XXXXX834034"
+        planId="9e0808304-344d-XXXXXXXXX-XXXXX834034" // Not required for a one time payment
         merchantKey="sk_test_fXXXXedhXXXXXXXXXXXXXXXX"
         text="Pay Money"
       />
@@ -95,11 +95,11 @@ import { useSpotflowPayment } from "@spot-flow/react-spotflow-checkout";
 
 const PaymentComponent = () => {
   const config = {
-    amount: 4000,
-    currency: "NGN",
+    amount: 4000, // Not required for subscription payment
+    currency: "NGN", // Not required for subscription payment
     email: "temi@mailinator.com",
     merchantKey: "sk_test_fXXXXedhXXXXXXXXXXXXXXXX",
-    planId: "9e0808304-344d-XXXXXXXXX-XXXXX834034",
+    planId: "9e0808304-344d-XXXXXXXXX-XXXXX834034", // Not required for a one time payment
     encryptionKey:"SKKXXXXXXXXXXXXXXXXX"
   }
   const initialFn = useSpotflowPayment(config);
@@ -138,10 +138,10 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 | ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | merchantKey         | True              | Your API Secret |
 | reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
-| amount              | False              | Amount to charge the customer.    |
-| currency            | False             | Currency to charge in.                 |
+| amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details. This is not required for subscription payments.   |
+| currency            | False             | Currency to charge in. Defaults to NGN. This is not required for subscription payments.                 |
 | encryptionKey       | True               | This is the encryption key for the merchant |
-| planId   | True | This is the plan id being paid for  |
+| planId   | True | This is the plan id being paid for however, this is not required for one time payments.  |
 | firstname | False | This is the Customer's First Name |
 | lastname | False | This is the Customer's Last Name |
 | email | True | This is the Customer's Email Address |
