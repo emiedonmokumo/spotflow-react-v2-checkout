@@ -28,7 +28,7 @@ Available Features:
 
 ## Demo
 
-![Alt text](https://github.com/user-attachments/assets/4dbb0b2e-2142-4f04-994a-5c352de7d30e "a title")
+![Alt text](https://raw.githubusercontent.com/Spotflow-One/spotflow-react-v2-checkout/refs/heads/main/src/assets/react-demo.png "a title")
 
 ## Installation
 
