@@ -18,7 +18,10 @@ export default function useSpotflow(hookConfig: HookConfig) {
       reference,
       regionId,
       rdtCode,
-      url
+      url,
+      callBackUrl,
+      metadata
+      
     } = args;
 
     const spotflowArgs = {
@@ -38,6 +41,8 @@ export default function useSpotflow(hookConfig: HookConfig) {
       ...(reference && { reference }),
       ...(rdtCode && { rdtCode }),
       ...(url && { url }),
+      ...(callBackUrl && { callBackUrl }),
+      ...(metadata && { metadata }),
       ...(onTransferConfirmationPending && { onTransferConfirmationPending }),
     };
 
