@@ -15,6 +15,7 @@ export type SpotflowProps = {
   lastname?: string;
   callBackUrl?: string;
   metadata?: Record<string, any>;
+  localCurrency?: string;
   onTransferConfirmationPending?: (_val?: any) => void;
 };
 
@@ -47,4 +48,5 @@ export type SpotflowCheckoutProps = {
   onTransferConfirmationPending?: (_val?: any) => void;
   callBackUrl?: string;
   metadata?: Record<string, any>;
+  localCurrency?: string;
 };
