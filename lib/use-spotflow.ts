@@ -20,7 +20,8 @@ export default function useSpotflow(hookConfig: HookConfig) {
       rdtCode,
       url,
       callBackUrl,
-      metadata
+      metadata,
+      localCurrency
       
     } = args;
 
@@ -43,6 +44,7 @@ export default function useSpotflow(hookConfig: HookConfig) {
       ...(url && { url }),
       ...(callBackUrl && { callBackUrl }),
       ...(metadata && { metadata }),
+      ...(localCurrency && { localCurrency }),
       ...(onTransferConfirmationPending && { onTransferConfirmationPending }),
     };
 
