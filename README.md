@@ -6,7 +6,7 @@ The **Spotflow React SDK** helps you or rather enables users to make payments se
 
 Available Features:
 
-- Collections: Card, Bank Transfers, USSD
+- Collections: Card, Bank Transfer, Mobile Money and more
 - Recurring payments: Tokenization and Subscriptions.
 
 ## Table of Contents
@@ -14,17 +14,14 @@ Available Features:
 1. [Requirements](#requirements)
 2. [Installation](#installation)
 3. [Usage](#usage)
-4. [Support](#supports)
-5. [License](#license)
-6. [Contributing Guidelines](#contribting-guidelines)
-7. [Contributors](#contributors)
+4. [License](#license)
 
 ## Requirements
 
 1. Spoflow Encryption keys
 2. Spotflow API keys
-3. Node versions >= 16.x.x npm >=7.x.x
-4. React version >= 16.8.0
+3. Node versions >= 18.x.x 
+4. React version >= 18.8.0
 
 ## Demo
 
@@ -67,10 +64,10 @@ const PaymentComponent = () => {
       <SpotflowButton
         amount={4000} // Not required for subscription payment
         currency="NGN"
-        email="temi@mailinator.com"
-        firstname="John"
-        lastname="Doe"
-        phone="09090909090"
+        email="temi@mailinator.com" // Email of customer
+        reference="MC-123456" // Not required, a unique payment reference will be generated if not provided
+        name="John" // Name of customer: Not required
+        phoneNumber="09090909090" // Phone number of customer: Not required
         encryptionKey="SKKXXXXXXXXXXXXXXXXX"
         planId="9e0808304-344d-XXXXXXXXX-XXXXX834034" // Not required for a one time payment
         merchantKey="sk_test_fXXXXedhXXXXXXXXXXXXXXXX"
@@ -97,29 +94,23 @@ const PaymentComponent = () => {
   const config = {
     amount: 4000, // Not required for subscription payment
     currency: "NGN",
-    email: "temi@mailinator.com",
+    email: "temi@mailinator.com", // Email of customer
+    name: "John", // Name of customer: Not required
+    phoneNumber: "09090909090", // Phone number of customer: Not required
+    reference: "MC-123456", // Not required, a unique payment reference will be generated if not provided
     merchantKey: "sk_test_fXXXXedhXXXXXXXXXXXXXXXX",
     planId: "9e0808304-344d-XXXXXXXXX-XXXXX834034", // Not required for a one time payment
     encryptionKey:"SKKXXXXXXXXXXXXXXXXX"
   }
-  const initialFn = useSpotflowPayment(config);
+  const initialFn = useSpotflowPayment();
 
   return (
     <div>
       <button
         type="button"
         onClick={() => {
-          initialFn({
-            config: undefined,
-            onClose: () => {
-               // Enter your action here
-            },
-            onSuccess: () => {
-               // Enter your action here 
-            }
-          });
+          initialFn(config);
         }}
-        className=" bg-primary-main text-black"
       >
         Pay
       </button>
@@ -138,21 +129,17 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 | ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | merchantKey         | True              | Your API Secret |
 | reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
-| amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details. This is not required for subscription payments.   |
+| amount              | False              | Amount to charge the customer. NB: For subscription payments, amount comes from the plan details. This is not required for subscription payments.   |
 | currency            | True             | Currency to charge in.           |
 | localCurrency       | False            | This is only required when a payment is being made in USD  |
 | encryptionKey       | True               | This is the encryption key for the merchant. This is required for card payments. |
 | planId   | False | This is the plan ID being paid for however, this is not required for one time payments.   |
-| firstName | False | This is the Customer's First Name |
-| lastName | False | This is the Customer's Last Name |
-| phone | False | This is the Customer's Phone Number |
+| name | False | This is the Customer's Name |
+| phoneNumber | False | This is the Customer's Phone Number |
 | email | True | This is the Customer's Email Address |
 | metadata | True | This contains other information about the product such as the product name and other additional properties. Product Name should not be passed if planId is being passed |
 | callBackUrl | False | This is the URL the browser redirects to on success of a payment |
 
-## Contribution Guidelines
-
-We welcome contributions from the community. Read more about our community contribution guidelines [here](/CONTRIBUTION.md).
 
 ## License
 
