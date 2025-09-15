@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-// import { callSpotflowPop } from "./spotflow-actions";
-import { HookConfig } from "./types";
+import { SpotflowCheckoutProps } from "./types";
 
 export default function useSpotflow() {
   const [isReady, setIsReady] = useState(false);
@@ -10,23 +9,35 @@ export default function useSpotflow() {
     setIsReady(true);
   }, []);
 
-  // Guard against server-side execution
-  if (
-    !isReady ||
-    typeof window === "undefined" ||
-    typeof document === "undefined"
-  ) {
-    console.warn("usePopup: Cannot start popup on server-side");
-    return;
-  }
-  async function initialisePayment(args: HookConfig) {
+  useEffect(() => {
+    if (isReady && typeof document !== "undefined") {
+      const inlineSdk =
+        "https://v1.inline-checkout.spotflow.one/dist/checkout-inline.js";
+      if (!document.querySelector(`[src="${inlineSdk}"]`)) {
+        const script = document.createElement("script");
+        script.src = inlineSdk;
+        script.onload = () => {
+          setIsReady(true);
+        };
+        script.onerror = () => {
+          console.error("Failed to load Spotflow Inline SDK script.");
+          setIsReady(false);
+        };
+        document.body.appendChild(script);
+      } else {
+        setIsReady(true);
+      }
+    }
+  }, [isReady]);
+
+  async function initialisePayment(args: SpotflowCheckoutProps) {
     // Guard against server-side execution
     if (
       !isReady ||
       typeof window === "undefined" ||
       typeof document === "undefined"
     ) {
-      console.warn("usePopup: Cannot initialize popup on initialisePayment");
+      console.warn("Cannot initialize Spotflow popup in this environment. Please ensure this is run on the client side.");
       return;
     }
 
@@ -38,7 +49,6 @@ export default function useSpotflow() {
       amount,
       currency,
       name,
-      // onTransferConfirmationPending,
       phoneNumber,
       reference,
       rdtCode,
@@ -51,21 +61,20 @@ export default function useSpotflow() {
 
     const spotflowArgs = {
       merchantKey,
-      planId,
       encryptionKey,
       email,
       amount,
       reference,
+      currency,
       ...(name && { name }),
+      ...(planId && { planId }),
       ...(phoneNumber && { phoneNumber }),
-      ...(currency && { currency }),
       ...(rdtCode && { rdtCode }),
       ...(url && { url }),
       ...(callBackUrl && { callBackUrl }),
       ...(metadata && { metadata }),
       ...(localCurrency && { localCurrency }),
       ...(countryCode && { countryCode }),
-      // ...(onTransferConfirmationPending && { onTransferConfirmationPending }),
     };
 
     try {

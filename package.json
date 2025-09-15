@@ -1,6 +1,6 @@
 {
   "name": "@spot-flow/react-spotflow-checkout",
-  "version": "0.1.70-dev.16",
+  "version": "0.1.70-dev.21",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",

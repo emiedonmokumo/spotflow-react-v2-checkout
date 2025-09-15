@@ -2,10 +2,9 @@
 
 import { SpotflowCheckoutProps } from "./types";
 
-export const callSpotflowPop = (args: Record<string, any>) => {
-  // Your logic here to call the Spotflow Pop-up checkout
+export const callSpotflowPop = (args: SpotflowCheckoutProps) => {
   if (typeof document === 'undefined') {
-    console.log("Document is undefined, cannot proceed.");
+    console.warn("Document is undefined, cannot proceed.");
     return;
   };
   
@@ -23,7 +22,6 @@ export const callSpotflowPop = (args: Record<string, any>) => {
       reference: args.reference,
       rdtCode: args?.rdtCode,
       url: args?.url,
-      // onTransferConfirmationPending: args.onTransferConfirmationPending,
       callBackUrl: args?.callBackUrl,
       metadata: args?.metadata,
       countryCode: args?.countryCode,

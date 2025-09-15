@@ -48,5 +48,5 @@ export default defineConfig({
       },
     },
   },
-  assetsInclude: ["**/*.otf", "**/*.woff", "**/*.woff2"],
+  assetsInclude: ["**/*.otf", "**/*.woff", "**/*.woff2", "**/*.ttf"],
 });
