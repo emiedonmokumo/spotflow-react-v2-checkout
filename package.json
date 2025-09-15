@@ -1,6 +1,6 @@
 {
   "name": "@spot-flow/react-spotflow-checkout",
-  "version": "0.1.70-dev.21",
+  "version": "0.1.70",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -37,6 +37,12 @@
   },
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "spotflow",
+    "checkout",
+    "react",
+    "payment"
   ],
   "author": "Kayode Ogunnowo <olukayodeogunnowo@gmail.com>",
   "license": "MIT",
