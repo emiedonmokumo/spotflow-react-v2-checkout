@@ -8,7 +8,7 @@ import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), svgr(), dts({ include: ["lib"] })],
+  plugins: [react(), svgr(), dts({ include: ["lib"], insertTypesEntry: true, rollupTypes: true })],
   resolve: {
     alias: {
       "@library": resolve(__dirname, "lib"),
@@ -21,16 +21,22 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
-      external: Object.keys(peerDependencies),
+      external: ["react", "react-dom", "react/jsx-runtime"],
       plugins: [
         alias({
-          entries: [{ find: "@library", replacement: resolve(__dirname, "lib") }],
+          entries: [
+            { find: "@library", replacement: resolve(__dirname, "lib") },
+          ],
         }),
       ],
       output: {
         manualChunks(id) {
           if (id.includes(".svg?react")) {
-            return id.toString().split("/")[id.toString().split("/").length - 1].split("?react")[0].toString();
+            return id
+              .toString()
+              .split("/")
+              [id.toString().split("/").length - 1].split("?react")[0]
+              .toString();
           }
         },
         assetFileNames: "assets/[name][extname]",
@@ -42,5 +48,5 @@ export default defineConfig({
       },
     },
   },
-  assetsInclude: ["**/*.otf", "**/*.woff", "**/*.woff2"],
+  assetsInclude: ["**/*.otf", "**/*.woff", "**/*.woff2", "**/*.ttf"],
 });

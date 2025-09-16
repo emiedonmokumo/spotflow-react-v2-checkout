@@ -1,54 +1,89 @@
-import { callSpotflowPop } from "./spotflow-actions";
-import { HookConfig, InitialisePayment } from "./types";
+import { useEffect, useState } from "react";
+import { SpotflowCheckoutProps } from "./types";
 
-export default function useSpotflow(hookConfig: HookConfig) {
-  function initialisePayment({ config, onClose, onSuccess }: Parameters<InitialisePayment>[0]) {
-    const args = { ...hookConfig, ...config };
+export default function useSpotflow() {
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    // Mark as client-side ready
+    setIsReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (isReady && typeof document !== "undefined") {
+      const inlineSdk =
+        "https://v1.inline-checkout.spotflow.one/dist/checkout-inline.js";
+      if (!document.querySelector(`[src="${inlineSdk}"]`)) {
+        const script = document.createElement("script");
+        script.src = inlineSdk;
+        script.onload = () => {
+          setIsReady(true);
+        };
+        script.onerror = () => {
+          console.error("Failed to load Spotflow Inline SDK script.");
+          setIsReady(false);
+        };
+        document.body.appendChild(script);
+      } else {
+        setIsReady(true);
+      }
+    }
+  }, [isReady]);
+
+  async function initialisePayment(args: SpotflowCheckoutProps) {
+    // Guard against server-side execution
+    if (
+      !isReady ||
+      typeof window === "undefined" ||
+      typeof document === "undefined"
+    ) {
+      console.warn("Cannot initialize Spotflow popup in this environment. Please ensure this is run on the client side.");
+      return;
+    }
+
     const {
       merchantKey,
       planId,
       encryptionKey,
       email,
       amount,
-      currency = "NGN",
-      firstname,
-      lastname,
-      onTransferConfirmationPending,
-      phone,
+      currency,
+      name,
+      phoneNumber,
       reference,
-      regionId,
       rdtCode,
       url,
       callBackUrl,
       metadata,
-      localCurrency
-      
+      localCurrency,
+      countryCode,
     } = args;
 
     const spotflowArgs = {
       merchantKey,
-      planId,
       encryptionKey,
       email,
       amount,
-      onSuccess: onSuccess ? onSuccess : () => null,
-      onCancel: onClose ? onClose : () => null,
-      ...(regionId && { regionId }),
-      ...(email && { email }),
-      ...(firstname && { firstname }),
-      ...(lastname && { lastname }),
-      ...(phone && { phone }),
-      ...(currency && { currency }),
-      ...(reference && { reference }),
+      reference,
+      currency,
+      ...(name && { name }),
+      ...(planId && { planId }),
+      ...(phoneNumber && { phoneNumber }),
       ...(rdtCode && { rdtCode }),
       ...(url && { url }),
       ...(callBackUrl && { callBackUrl }),
       ...(metadata && { metadata }),
       ...(localCurrency && { localCurrency }),
-      ...(onTransferConfirmationPending && { onTransferConfirmationPending }),
+      ...(countryCode && { countryCode }),
     };
 
-    callSpotflowPop(spotflowArgs);
+    try {
+      // Dynamically import the function only when needed
+      const { callSpotflowPop } = await import("./spotflow-actions"); // Adjust path
+      callSpotflowPop(spotflowArgs);
+    } catch (error) {
+      console.error("Error loading popup:", error);
+    }
   }
 
   return initialisePayment;

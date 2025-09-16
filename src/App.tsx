@@ -11,11 +11,9 @@ function App() {
         amount={4000}
         currency="NGN"
         email="temi@mailinator.com"
-        firstname="John"
-        lastname="Doe"
-        phone="09090909090"
+        name="John"
+        phoneNumber="09090909090"
         encryptionKey="SKKXXXXXXXXXXXXXXXXX"
-        planId="9e0808304-344d-XXXXXXXXX-XXXXX834034"
         merchantKey="sk_test_fXXXXedhXXXXXXXXXXXXXXXX"
         text="Pay Money"
       />

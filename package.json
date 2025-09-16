@@ -1,24 +1,21 @@
 {
   "name": "@spot-flow/react-spotflow-checkout",
-  "version": "0.1.69",
+  "version": "0.1.70",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
   "source": "lib/main.ts",
   "scripts": {
     "dev": "vite",
-    "clean": "rimraf dist",
-    "build": "yarn clean && tsc --p ./tsconfig.lib.json && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17 || ^18",
-    "react-dom": "^16.8.5 || ^17.0.0 || ^18.0.0"
+    "react": "^16.8.0 || ^17 || ^18 || ^19",
+    "react-dom": "^16.8.5 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.4.0",
-    "@commitlint/config-conventional": "^19.2.2",
     "@eslint/js": "^9.9.0",
     "@rollup/plugin-alias": "^5.1.0",
     "@types/node": "^22.4.1",
@@ -26,16 +23,11 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "eslint": "^9.9.0",
-    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
-    "husky": "^9.1.4",
-    "lint-staged": "^15.2.9",
-    "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "rimraf": "^6.0.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1",
@@ -46,7 +38,13 @@
   "files": [
     "dist"
   ],
+  "keywords": [
+    "spotflow",
+    "checkout",
+    "react",
+    "payment"
+  ],
   "author": "Kayode Ogunnowo <olukayodeogunnowo@gmail.com>",
   "license": "MIT",
-  "packageManager": "yarn@4.4.0+sha512.91d93b445d9284e7ed52931369bc89a663414e5582d00eea45c67ddc459a2582919eece27c412d6ffd1bd0793ff35399381cb229326b961798ce4f4cc60ddfdb"
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
