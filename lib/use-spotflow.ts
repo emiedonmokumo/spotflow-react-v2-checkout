@@ -12,7 +12,7 @@ export default function useSpotflow() {
   useEffect(() => {
     if (isReady && typeof document !== "undefined") {
       const inlineSdk =
-        "https://v1.inline-checkout.spotflow.one/dist/checkout-inline.js";
+        "https://v2.inline-checkout.spotflow.one/dist/checkout-inline.js";
       if (!document.querySelector(`[src="${inlineSdk}"]`)) {
         const script = document.createElement("script");
         script.src = inlineSdk;
