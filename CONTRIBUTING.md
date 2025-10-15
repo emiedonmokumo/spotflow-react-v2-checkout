@@ -29,7 +29,7 @@ Clone the repo and install dependencies:
 git clone https://github.com/Spotflow-One/spotflow-react-v2-checkout.git
 cd spotflow-react-v2-checkout
 npm install
-npm start
+npm run dev
 ```
 
 ## 🏁 Maintainers
