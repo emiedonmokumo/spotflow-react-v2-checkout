@@ -9,7 +9,6 @@ The goal was to verify that the SDK installs, renders, and functions properly ac
 
 ## 🔍 Test Environment
 - **Package tested:** `@spot-flow/react-spotflow-checkout`
-- **Testing mode:** Test key (`sk_test_3500ece212364e11abd01984afdd67b3`)
 - **Build tool:** Vite + React
 - **OS:** Windows 11
 - **Browser:** Chrome
