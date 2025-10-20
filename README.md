@@ -18,10 +18,18 @@ Available Features:
 
 ## Requirements
 
-1. Spoflow Encryption keys
-2. Spotflow API keys
-3. Node versions >= 18.x.x 
-4. React version >= 18.8.0
+1. **Spoflow Encryption keys**
+2. **Spotflow API keys**
+3. **Node.js** versions >= 18.x.x
+4. **React** version >= 17.0.0
+
+## Compatibility Note
+
+The Spotflow SDK is compatible with **React 17 and 18**
+
+> ⚠️ React 16.8 is not supported.
+> Importing the SDK in React 16.8 projects causes build-time errors (`ERR_ABORTED 504 (OUTDATED Optimize Dep)`) due to outdated dependency optimizations.
+> We recommend using React 17+ for full compatibility.
 
 ## Demo
 
