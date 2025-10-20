@@ -5,7 +5,7 @@ export function getCdnFn() {
   }
   const script = document.createElement("script");
   const inlineSdk =
-    "https://v1.inline-checkout.spotflow.one/dist/checkout-inline.js";
+    "https://v2.inline-checkout.spotflow.one/dist/checkout-inline.js";
   script.src = inlineSdk;
 
   if (!document.querySelector(`[src="${inlineSdk}"]`)) {
