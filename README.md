@@ -28,7 +28,7 @@ Available Features:
 The Spotflow SDK is compatible with **React 17 and 18**
 
 > ⚠️ React 16.8 is not supported.
-> During testing, importing the SDK in React 16.8 projects caused build-time errors (`ERR_ABORTED 504 (OUTDATED Optimize Dep)`) due to outdated dependency optimizations.
+> Importing the SDK in React 16.8 projects causes build-time errors (`ERR_ABORTED 504 (OUTDATED Optimize Dep)`) due to outdated dependency optimizations.
 > We recommend using React 17+ for full compatibility.
 
 ## Demo
