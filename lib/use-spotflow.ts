@@ -5,20 +5,12 @@ export default function useSpotflow() {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    // Mark as client-side ready
-    setIsReady(true);
-  }, []);
-
-  useEffect(() => {
-    if (isReady && typeof document !== "undefined") {
-      const inlineSdk =
-        "https://v2.inline-checkout.spotflow.one/dist/checkout-inline.js";
+    if (typeof document !== "undefined") {
+      const inlineSdk = "https://v2.inline-checkout.spotflow.one/dist/checkout-inline.js";
       if (!document.querySelector(`[src="${inlineSdk}"]`)) {
         const script = document.createElement("script");
         script.src = inlineSdk;
-        script.onload = () => {
-          setIsReady(true);
-        };
+        script.onload = () => setIsReady(true);
         script.onerror = () => {
           console.error("Failed to load Spotflow Inline SDK script.");
           setIsReady(false);
@@ -28,7 +20,7 @@ export default function useSpotflow() {
         setIsReady(true);
       }
     }
-  }, [isReady]);
+  }, []);
 
   async function initialisePayment(args: SpotflowCheckoutProps) {
     // Guard against server-side execution
